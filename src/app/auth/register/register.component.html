@@ -1,0 +1,49 @@
+<div class="body">
+  <div class="container">
+    <div class="card">
+      <h4 class="header text-color">Register</h4>
+      <form [formGroup]="registerForm" novalidate (ngSubmit)="register()">
+        <div class="mb-3">
+          <label class="form-label text-color">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter username"
+            formControlName="username"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label text-color">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter working email address"
+            formControlName="email"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label text-color">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Enter password"
+            formControlName="password"
+            required
+          />
+          <div class="form-text">
+            <span style="font-size: 12px" class="text-color"
+              >Password must be 8 characters long and contains one smallcase
+              letter, one capital letter and one symbol</span
+            >
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary bt">Submit</button>
+        <br />
+        <p class="text-color">Already have an account? <a href="/">Login</a></p>
+      </form>
+    </div>
+  </div>
+</div>

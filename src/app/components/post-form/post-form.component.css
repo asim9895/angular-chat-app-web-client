@@ -1,0 +1,15 @@
+.card {
+  padding: 20px;
+  background-color: #121824 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form-control {
+  background-color: #121824 !important;
+  color: #fff !important;
+  border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+textarea {
+  color: #fff !important;
+}

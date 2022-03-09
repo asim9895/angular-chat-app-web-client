@@ -1,0 +1,49 @@
+.nav-basic {
+  background-color: #121824 !important;
+  color: white !important;
+}
+
+a {
+  color: white;
+}
+
+.navbar-toggler {
+  width: 47px;
+  height: 34px;
+}
+
+.navbar-toggler .line {
+  width: 100%;
+  float: left;
+  height: 2px;
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+
+.stretch {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100%;
+}
+
+.brand-name {
+  font-family: "Cinzel Decorative";
+  font-size: 25px;
+}
+
+a.dropdown-item {
+  color: #121824 !important;
+}
+
+.drop-toggle {
+  margin-top: -5px !important;
+  margin-right: 15px !important;
+}
+
+.drop-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

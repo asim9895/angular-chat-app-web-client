@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Nunito:wght@600&display=swap");
+
+* {
+  font-family: "Nunito";
+  text-decoration: none;
+  margin: 0;
+}
+
+html {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #121824;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #121824;
+}

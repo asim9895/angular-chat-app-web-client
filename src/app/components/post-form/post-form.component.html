@@ -1,0 +1,29 @@
+<div class="card">
+  <h5 style="color: #fff; margin-left: 20px">Upload Post</h5>
+
+  <form [formGroup]="postForm" novalidate (ngSubmit)="post_form()">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <textarea
+            type="text"
+            class="form-control"
+            placeholder="Enter Post Details"
+            formControlName="post"
+            required
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="mb-3">
+          <input type="file" class="form-control" placeholder="Enter image" />
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary bt">Submit</button>
+
+    <br />
+  </form>
+</div>
