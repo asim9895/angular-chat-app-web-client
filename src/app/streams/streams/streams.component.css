@@ -1,9 +1,9 @@
 .body {
   background-color: #121824 !important;
+  height: auto;
 }
 .container {
   padding-top: 120px;
-  height: 100vh;
 }
 
 .list-group-item {
