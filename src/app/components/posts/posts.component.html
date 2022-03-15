@@ -16,14 +16,34 @@
           <p class="card-text">
             {{ post?.post }}
           </p>
-          <div class="row" style="margin-bottom: 10px">
-            <div class="col-4"><i class="fa-regular fa-heart"></i> Likes</div>
+          <div class="row" style="margin-bottom: 10px; align-items: center">
             <div class="col-4">
-              <i class="fa-regular fa-comment"></i> Comments
+              <i
+                *ngIf="!checkLikesArray(post.likes, user._id)"
+                class="fa-regular fa-heart"
+                (click)="likePost(post)"
+                style="font-size: 22px; cursor: pointer"
+              ></i>
+              <i
+                *ngIf="checkLikesArray(post.likes, user._id)"
+                class="fa-solid fa-heart ab"
+                (click)="unlikePost(post)"
+                style="font-size: 22px; cursor: pointer"
+              ></i>
+              {{ post?.likes?.length === 0 ? "" : post?.likes?.length }} Likes
+            </div>
+            <div class="col-5">
+              <i
+                class="fa-regular fa-comment"
+                style="font-size: 22px; cursor: pointer"
+                (click)="newComment(post)"
+              ></i>
+              {{ post?.comments?.length === 0 ? "" : post?.comments?.length }}
+              Comments
             </div>
           </div>
           <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
+            <small class="text-muted">{{ timeFromNow(post?.createdAt) }}</small>
           </p>
         </div>
       </div>

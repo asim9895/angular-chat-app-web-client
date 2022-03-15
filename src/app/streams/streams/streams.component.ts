@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 import { TokenService } from 'src/app/services/token.service';
 import * as UserActions from '../../actions/users.actions';
+import io from 'socket.io-client';
 
 @Component({
   selector: 'app-streams',
@@ -16,19 +17,25 @@ export class StreamsComponent implements OnInit {
   token: any;
   user: any;
   posts: any;
+  socket: any;
   constructor(
     public tokenService: TokenService,
     public router: Router,
     public authService: AuthService,
     public store: Store<AppState>,
     public postService: PostService
-  ) {}
+  ) {
+    this.socket = io('http://localhost:2300');
+  }
 
   ngOnInit(): void {
     this.token = this.tokenService.get_token();
 
     this.get_current_user();
     this.get_all_posts();
+    this.socket.on('refreshPage', () => {
+      this.get_all_posts();
+    });
   }
 
   get_all_posts() {
@@ -42,10 +49,5 @@ export class StreamsComponent implements OnInit {
       this.user = data;
       this.store.dispatch(new UserActions.SaveUser(data.user));
     });
-  }
-
-  public logout() {
-    this.tokenService.delete_token();
-    this.router.navigate(['/']);
   }
 }

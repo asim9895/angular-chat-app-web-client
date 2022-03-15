@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 import { TokenService } from 'src/app/services/token.service';
+import io from 'socket.io-client';
 
 @Component({
   selector: 'app-post-form',
@@ -14,6 +15,7 @@ import { TokenService } from 'src/app/services/token.service';
 export class PostFormComponent implements OnInit {
   postForm: FormGroup;
   token: any;
+  socket: any;
 
   constructor(
     private postService: PostService,
@@ -21,7 +23,9 @@ export class PostFormComponent implements OnInit {
     private toast: ToastrService,
     private router: Router,
     private tokenService: TokenService
-  ) {}
+  ) {
+    this.socket = io('http://localhost:2300');
+  }
   ngOnInit(): void {
     this.init();
   }
@@ -38,6 +42,7 @@ export class PostFormComponent implements OnInit {
       (data) => {
         if (data.message === 'success') {
           this.toast.success('Post Uploaded Successfully');
+          this.socket.emit('refresh', {});
           this.postForm.reset();
           this.router.navigate(['/streams']);
         }

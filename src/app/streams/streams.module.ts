@@ -7,6 +7,8 @@ import { PostFormComponent } from '../components/post-form/post-form.component';
 import { PostsComponent } from '../components/posts/posts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommentsComponent } from '../components/comments/comments.component';
+import { SingleStreamComponent } from './single-stream/single-stream.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SideNavComponent,
     PostFormComponent,
     PostsComponent,
+    CommentsComponent,
+    SingleStreamComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   exports: [NavbarComponent, StreamsComponent],

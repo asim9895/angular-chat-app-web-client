@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './services/auth.guard';
+import { SingleStreamComponent } from './streams/single-stream/single-stream.component';
 import { StreamsComponent } from './streams/streams/streams.component';
 
 const routes: Routes = [
@@ -17,6 +18,11 @@ const routes: Routes = [
   {
     path: 'streams',
     component: StreamsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'stream/:id',
+    component: SingleStreamComponent,
     canActivate: [AuthGuard],
   },
 ];

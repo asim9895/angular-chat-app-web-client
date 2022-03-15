@@ -16,4 +16,12 @@ export class PostService {
   all_posts(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/all-posts`, body);
   }
+
+  like_post(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/add-like`, body);
+  }
+
+  unlike_post(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/remove-like`, body);
+  }
 }
