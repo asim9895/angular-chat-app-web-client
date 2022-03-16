@@ -30,7 +30,6 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.store.select('users').subscribe((res) => {
       this.user = res?.user;
-      console.log(this.user);
     });
 
     this.socket.on('refreshPage', () => {
@@ -42,26 +41,26 @@ export class PostsComponent implements OnInit {
     return moment(time).fromNow();
   }
 
-  checkLikesArray(arr: any, user: any) {
-    console.log(arr);
-    console.log(user);
+  checkArray(arr: any, user: any) {
     return _.some(arr, { user: user });
   }
 
   likePost(post: any) {
     this.postService.like_post({ post_id: post?._id }).subscribe((data) => {
       this.socket.emit('refresh', {});
-      console.log(data);
     });
   }
   unlikePost(post: any) {
     this.postService.unlike_post({ post_id: post?._id }).subscribe((data) => {
       this.socket.emit('refresh', {});
-      console.log(data);
     });
   }
 
   newComment(stream: any) {
+    return this.router.navigate(['stream', stream?._id]);
+  }
+
+  streamNavigate(stream: any) {
     return this.router.navigate(['stream', stream?._id]);
   }
 }

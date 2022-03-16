@@ -4,10 +4,204 @@
   <div class="container" style="max-width: 1300px">
     <div class="row">
       <div class="col-sm-3">
-        <app-side-nav></app-side-nav>
+        <button
+          class="btn btn-primary"
+          (click)="goBack()"
+          style="margin-top: 30px; margin-left: 40px; position: fixed"
+        >
+          Go Back
+        </button>
       </div>
       <div class="col-sm-8">
-        <app-post-form></app-post-form>
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-text abc">
+              {{ post?.user?.username }}
+            </h6>
+          </div>
+
+          <img
+            src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <p class="card-text">
+              {{ post?.post }}
+            </p>
+            <div class="row" style="margin-bottom: 10px; align-items: center">
+              <div class="col-4">
+                <i
+                  *ngIf="!checkArray(post?.likes, user?._id)"
+                  class="fa-regular fa-heart"
+                  (click)="likePost(post)"
+                  style="font-size: 22px; cursor: pointer"
+                ></i>
+                <i
+                  *ngIf="checkArray(post?.likes, user?._id)"
+                  class="fa-solid fa-heart ab"
+                  (click)="unlikePost(post)"
+                  style="font-size: 22px; cursor: pointer"
+                ></i>
+                {{ post?.likes?.length === 0 ? "" : post?.likes?.length }}
+                Likes
+              </div>
+              <div class="col-5">
+                <i
+                  [ngClass]="
+                    !checkArray(post.comments, user._id)
+                      ? 'fa-regular fa-comment'
+                      : 'fa-solid fa-comment com-color'
+                  "
+                  style="font-size: 22px; cursor: pointer"
+                  (click)="newComment(post)"
+                ></i>
+                {{ post?.comments?.length === 0 ? "" : post?.comments?.length }}
+                Comments
+              </div>
+            </div>
+            <p class="card-text">
+              <small class="text-muted">{{
+                timeFromNow(post?.createdAt)
+              }}</small>
+            </p>
+          </div>
+        </div>
+
+        <ul class="nav nav-pills nav-fill" style="margin-bottom: 30px">
+          <li class="nav-item">
+            <a
+              [ngClass]="tab === 'comments' ? 'nav-link active' : 'nav-link'"
+              aria-current="page"
+              (click)="selectCommentsTab()"
+              >Comments</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              [ngClass]="tab === 'likes' ? 'nav-link active' : 'nav-link'"
+              (click)="selectLikesTab()"
+              >Likes</a
+            >
+          </li>
+        </ul>
+        <ng-container *ngIf="tab === 'comments'">
+          <div class="card">
+            <h5 style="color: #fff; margin-left: 10px">Add Comment</h5>
+
+            <form
+              [formGroup]="commentForm"
+              novalidate
+              (ngSubmit)="comment_form()"
+            >
+              <div class="mb-3">
+                <textarea
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Comment"
+                  formControlName="comment"
+                  required
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary bt">Submit</button>
+
+              <br />
+            </form>
+          </div>
+
+          <h3 style="color: #fff">All Comments</h3>
+
+          <div *ngFor="let comment of post?.comments">
+            <div class="card com" style="margin-bottom: -10px">
+              <div class="card-body text-primary">
+                <div class="row">
+                  <div class="col-1">
+                    <img
+                      src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+                      class="comments-image"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col-7">
+                    <p class="card-title" style="font-size: 15px">
+                      {{ comment?.comment }}
+                    </p>
+                    <p
+                      class="card-text"
+                      style="font-size: 14px; margin-top: -20px"
+                    >
+                      <span>by</span>{{ " "
+                      }}<a style="color: #394be9; cursor: pointer">{{
+                        comment?.user?.username
+                      }}</a>
+                    </p>
+                  </div>
+                  <div
+                    class="col-3"
+                    style="
+                      flex-direction: column;
+                      justify-content: flex-start;
+                      align-items: flex-end;
+                      display: flex;
+                    "
+                  >
+                    <p class="card-text">
+                      <small class="text-muted">{{
+                        timeFromNow(comment?.createdAt)
+                      }}</small>
+                    </p>
+                    <div *ngIf="comment?.user?._id === user?._id">
+                      <i
+                        class="fa-solid fa-trash"
+                        style="font-size: 18px; color: crimson"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="tab === 'likes'">
+          <div *ngFor="let like of post?.likes">
+            <div class="card com" style="margin-bottom: -10px">
+              <div class="card-body text-primary">
+                <div class="row" style="align-items: center">
+                  <div class="col-1">
+                    <img
+                      src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+                      class="comments-image"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col-7">
+                    <p
+                      class="card-title"
+                      style="
+                        font-size: 18px;
+                        text-decoration: underline;
+                        color: #394be9;
+                        cursor: pointer;
+                      "
+                    >
+                      {{ like?.user?.username }}
+                    </p>
+                  </div>
+                  <div class="col-3">
+                    <p class="card-text">
+                      <small class="text-muted">{{
+                        timeFromNow(like?.createdAt)
+                      }}</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>

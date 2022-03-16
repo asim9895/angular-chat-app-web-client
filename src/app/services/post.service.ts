@@ -13,8 +13,13 @@ export class PostService {
   add_post(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/add-post`, body);
   }
+
   all_posts(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/all-posts`, body);
+  }
+
+  post_by_id(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/post-by-id`, body);
   }
 
   like_post(body: any): Observable<any> {
@@ -23,5 +28,9 @@ export class PostService {
 
   unlike_post(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/remove-like`, body);
+  }
+
+  add_comment(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/add-comment`, body);
   }
 }

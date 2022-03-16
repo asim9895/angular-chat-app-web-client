@@ -15,11 +15,12 @@ export class AppComponent implements OnInit {
 
   constructor(public authService: AuthService, public store: Store<AppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.get_current_user();
+  }
 
   get_current_user() {
     this.authService.curent_user({}).subscribe((data) => {
-      console.log(data);
       this.user = data;
       this.store.dispatch(new UserActions.SaveUser(data.user));
     });

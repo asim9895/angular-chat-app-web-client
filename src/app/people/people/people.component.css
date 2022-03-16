@@ -1,7 +1,6 @@
 .body {
   background-color: #121824 !important;
   height: auto;
-  margin-bottom: 100px !important;
 }
 .container {
   padding-top: 120px;
@@ -38,45 +37,28 @@ ol {
   border-radius: 20px !important;
 }
 
-.comments-image {
-  border-radius: 20px !important;
-  height: 60px !important;
-  width: 60px !important;
-}
-
 .abc {
   text-transform: capitalize !important;
-  font-size: 22px !important;
 }
 
 .ab {
   color: crimson !important;
 }
 
+.com-color {
+  color: #394be9 !important;
+}
+
 .form-control {
   background-color: #121824 !important;
   color: #fff !important;
-  border: 0.5px solid rgba(0, 0, 0, 0.2) !important;
+  border: 0.5px solid #394be9 !important;
 }
 
-textarea {
+input {
   color: #fff !important;
 }
 
 .bt {
   background-color: #394be9 !important;
-}
-
-body {
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.8em;
-  width: 400px;
-  margin: 0 auto;
-}
-
-p {
-  margin-bottom: 20px;
-}
-.com-color {
-  color: #394be9 !important;
 }
