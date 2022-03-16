@@ -15,6 +15,15 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/users.reducer';
 import { environment } from 'src/environments/environment.prod';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ExploreModule } from './explore/explore.module';
+import { PeopleModule } from './people/people.module';
+import { FollowersModule } from './followers/followers.module';
+import { FollowingModule } from './following/following.module';
+import { ChatsModule } from './chats/chats.module';
+import { PhotosModule } from './photos/photos.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +32,13 @@ import { environment } from 'src/environments/environment.prod';
     AppRoutingModule,
     AuthModule,
     StreamsModule,
+    ExploreModule,
+    PeopleModule,
+    FollowersModule,
+    FollowingModule,
+    ChatsModule,
+    PhotosModule,
+    NotificationsModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

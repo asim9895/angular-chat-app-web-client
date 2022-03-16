@@ -1,7 +1,12 @@
 <ul class="list-group" style="position: fixed; margin-bottom: 40px; width: 20%">
   <li
-    class="list-group-item d-flex justify-content-between align-items-start active"
-    style="margin: 5px; padding: 10px"
+    [ngClass]="
+      route === '/streams'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 10px; cursor: pointer"
+    (click)="pushStream()"
   >
     <div class="ms-2 me-auto">
       <div class="fw-bold">Feed</div>
@@ -12,8 +17,13 @@
     ></i>
   </li>
   <li
-    class="list-group-item d-flex justify-content-between align-items-start"
-    style="margin: 5px; padding: 10px"
+    [ngClass]="
+      route === '/explore'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 10px; cursor: pointer"
+    (click)="pushExplore()"
   >
     <div class="ms-2 me-auto">
       <div class="fw-bold">Explore</div>
@@ -24,8 +34,13 @@
     ></i>
   </li>
   <li
-    class="list-group-item d-flex justify-content-between align-items-start"
-    style="margin: 5px; padding: 10px"
+    [ngClass]="
+      route === '/people'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 10px; cursor: pointer"
+    (click)="pushPeople()"
   >
     <div class="ms-2 me-auto">
       <div class="fw-bold">People</div>
@@ -36,8 +51,13 @@
     ></i>
   </li>
   <li
-    class="list-group-item d-flex justify-content-between align-items-start"
-    style="margin: 5px; padding: 10px; align-items: center"
+    [ngClass]="
+      route === '/followers'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 10px; cursor: pointer"
+    (click)="pushFollowers()"
   >
     <div class="ms-2 me-auto">
       <div class="fw-bold">Followers</div>
@@ -50,8 +70,13 @@
   </li>
 
   <li
-    class="list-group-item d-flex justify-content-between align-items-start"
-    style="margin: 5px; padding: 10px"
+    [ngClass]="
+      route === '/following'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 10px; cursor: pointer"
+    (click)="pushFollowing()"
   >
     <div class="ms-2 me-auto">
       <div class="fw-bold">Following</div>
@@ -62,8 +87,13 @@
     ></i>
   </li>
   <li
-    class="list-group-item d-flex justify-content-between align-items-start"
-    style="margin: 5px; padding: 10px"
+    [ngClass]="
+      route === '/chats'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 10px; cursor: pointer"
+    (click)="pushChats()"
   >
     <div class="ms-2 me-auto">
       <div class="fw-bold">Chats</div>
@@ -74,8 +104,13 @@
     ></i>
   </li>
   <li
-    class="list-group-item d-flex justify-content-between align-items-start"
-    style="margin: 5px; padding: 10px"
+    [ngClass]="
+      route === '/photos'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 10px; cursor: pointer"
+    (click)="pushPhotos()"
   >
     <div class="ms-2 me-auto">
       <div class="fw-bold">Photos</div>
@@ -86,8 +121,13 @@
     ></i>
   </li>
   <li
-    class="list-group-item d-flex justify-content-between align-items-start"
-    style="margin: 5px; padding: 10px"
+    [ngClass]="
+      route === '/notifications'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 10px; cursor: pointer"
+    (click)="pushNotifications()"
   >
     <div class="ms-2 me-auto">
       <div class="fw-bold">Notifications</div>
