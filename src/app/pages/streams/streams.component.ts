@@ -5,7 +5,7 @@ import { AppState } from 'src/app/app.state';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 import { TokenService } from 'src/app/services/token.service';
-import * as UserActions from '../../actions/users.actions';
+import * as UserActions from '../../redux/actions/users.actions';
 import io from 'socket.io-client';
 
 @Component({

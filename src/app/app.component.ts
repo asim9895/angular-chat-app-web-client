@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './app.state';
 import { AuthService } from './services/auth.service';
-import * as UserActions from '../app/actions/users.actions';
+import * as UserActions from './redux/actions/users.actions';
 
 @Component({
   selector: 'app-root',
