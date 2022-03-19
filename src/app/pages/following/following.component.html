@@ -45,14 +45,23 @@
         </form>
 
         <div class="row">
-          <ng-container *ngIf="users.length === 0">
+          <ng-container *ngIf="following?.length === 0">
             <div>
               <h3 style="color: #fff; text-align: center; margin-top: 100px">
                 No Users Found
               </h3>
+              <ngx-loading
+                [show]="loading"
+                [config]="{
+                  backdropBorderRadius: '3px',
+                  primaryColour: '#394be9',
+                  secondaryColour: '#394be9',
+                  tertiaryColour: '#394be9'
+                }"
+              ></ngx-loading>
             </div>
           </ng-container>
-          <div class="card" style="width: 18rem" *ngFor="let user of users">
+          <div class="card" style="width: 18rem" *ngFor="let user of following">
             <img
               src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
               class="card-img-top"
@@ -60,9 +69,14 @@
             />
             <div class="card-body">
               <p class="card-text">
-                {{ user?.username }}
+                {{ user?.user?.username }}
               </p>
-              <a href="#" class="btn btn-primary">Follow</a>
+              <a
+                class="btn btn-primary bt"
+                *ngIf="checkArray(following, user?.user?._id)"
+                (click)="unfollowUser(user)"
+                >unfollow</a
+              >
             </div>
           </div>
         </div>

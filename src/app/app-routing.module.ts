@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { ChatsComponent } from './chats/chats/chats.component';
-import { ExploreComponent } from './explore/explore/explore.component';
-import { FollowersComponent } from './followers/followers/followers.component';
-import { FollowingComponent } from './following/following/following.component';
-import { NotificationsComponent } from './notifications/notifications/notifications.component';
-import { PeopleComponent } from './people/people/people.component';
-import { PhotosComponent } from './photos/photos/photos.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ChatsComponent } from './pages/chats/chats.component';
+import { ExploreComponent } from './pages/explore/explore.component';
+import { FollowersComponent } from './pages/followers/followers.component';
+import { FollowingComponent } from './pages/following/following.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { PeopleComponent } from './pages/people/people.component';
+import { PhotosComponent } from './pages/photos/photos.component';
 import { AuthGuard } from './services/auth.guard';
-import { SingleStreamComponent } from './streams/single-stream/single-stream.component';
-import { StreamsComponent } from './streams/streams/streams.component';
+import { SingleStreamComponent } from './pages/single-stream/single-stream.component';
+import { StreamsComponent } from './pages/streams/streams.component';
 
 const routes: Routes = [
   {

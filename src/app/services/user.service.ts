@@ -17,4 +17,12 @@ export class UserService {
   search_users(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/search-users`, body);
   }
+
+  follow_user(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/follow-user`, body);
+  }
+
+  unfollow_user(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/unfollow-user`, body);
+  }
 }

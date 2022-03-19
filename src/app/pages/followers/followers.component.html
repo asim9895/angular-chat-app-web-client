@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<div class="body">
+  <div class="container" style="max-width: 1300px">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-side-nav></app-side-nav>
+      </div>
+      <div class="col-sm-8">
+        <form [formGroup]="searchForm" novalidate (ngSubmit)="searchUsers()">
+          <div
+            style="
+              flex-direction: row;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search User"
+              required
+              formControlName="search"
+              style="width: 50%; margin-right: 20px"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-primary bt"
+              style="margin-right: 20px"
+            >
+              Search
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary bt"
+              (click)="clearFilter()"
+              *ngIf="searched"
+            >
+              Clear
+            </button>
+          </div>
+          <br />
+        </form>
+
+        <div class="row">
+          <ng-container *ngIf="followers?.length === 0">
+            <div>
+              <h3 style="color: #fff; text-align: center; margin-top: 100px">
+                No Users Found
+              </h3>
+              <ngx-loading
+                [show]="loading"
+                [config]="{
+                  backdropBorderRadius: '3px',
+                  primaryColour: '#394be9',
+                  secondaryColour: '#394be9',
+                  tertiaryColour: '#394be9'
+                }"
+              ></ngx-loading>
+            </div>
+          </ng-container>
+          <div class="card" style="width: 18rem" *ngFor="let user of followers">
+            <img
+              src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <p class="card-text">
+                {{ user?.user?.username }}
+              </p>
+              <a class="btn btn-primary bt">View Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

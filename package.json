@@ -25,6 +25,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "ngx-cookie": "^5.0.2",
+    "ngx-loading": "^13.0.0",
     "ngx-toastr": "^14.2.2",
     "rxjs": "~7.5.0",
     "socket.io-client": "^4.4.1",
