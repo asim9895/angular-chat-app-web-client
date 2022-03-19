@@ -21,3 +21,44 @@
 ol {
   list-style-type: none !important;
 }
+
+.card-body {
+  color: #fff !important;
+  background-color: #121824 !important;
+}
+
+.card {
+  border-width: 0 !important;
+  background-color: #121824 !important;
+  margin-bottom: 20px;
+}
+
+.card-img-top {
+  border-radius: 20px !important;
+}
+
+.abc {
+  text-transform: capitalize !important;
+}
+
+.ab {
+  color: crimson !important;
+}
+
+.com-color {
+  color: #394be9 !important;
+}
+
+.form-control {
+  background-color: #121824 !important;
+  color: #fff !important;
+  border: 0.5px solid #394be9 !important;
+}
+
+input {
+  color: #fff !important;
+}
+
+.bt {
+  background-color: #394be9 !important;
+}

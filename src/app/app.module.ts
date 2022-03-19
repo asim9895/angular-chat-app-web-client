@@ -14,12 +14,15 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment.prod';
 import { userReducer } from './redux/reducers/users.reducer';
 import { PagesModule } from './pages/pages.module';
+import { ComponentsModule } from './components/components.module';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     PagesModule,
+    ComponentsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -28,6 +31,7 @@ import { PagesModule } from './pages/pages.module';
       timeOut: 3000,
     }),
     CookieModule.forRoot(),
+    NgxLoadingModule.forRoot({}),
     StoreModule.forRoot({
       users: userReducer,
     }),

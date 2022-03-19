@@ -50,6 +50,15 @@
               <h3 style="color: #fff; text-align: center; margin-top: 100px">
                 No Users Found
               </h3>
+              <ngx-loading
+                [show]="loading"
+                [config]="{
+                  backdropBorderRadius: '3px',
+                  primaryColour: '#394be9',
+                  secondaryColour: '#394be9',
+                  tertiaryColour: '#394be9'
+                }"
+              ></ngx-loading>
             </div>
           </ng-container>
           <div class="card" style="width: 18rem" *ngFor="let user of users">
@@ -62,7 +71,18 @@
               <p class="card-text">
                 {{ user?.username }}
               </p>
-              <a href="#" class="btn btn-primary">Follow</a>
+              <a
+                class="btn btn-primary"
+                *ngIf="!checkArray(user_info?.following, user?._id)"
+                (click)="followUser(user)"
+                >follow</a
+              >
+              <a
+                class="btn btn-primary bt"
+                *ngIf="checkArray(user_info?.following, user?._id)"
+                (click)="unfollowUser(user)"
+                >unfollow</a
+              >
             </div>
           </div>
         </div>

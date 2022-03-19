@@ -14,13 +14,15 @@ import { SingleStreamComponent } from './single-stream/single-stream.component';
 import { StreamsComponent } from './streams/streams.component';
 import { ExploreComponent } from './explore/explore.component';
 import { ChatsComponent } from './chats/chats.component';
+import { FollowingComponent } from './following/following.component';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     FollowersComponent,
-    FollowersComponent,
+    FollowingComponent,
     RegisterComponent,
     NotificationsComponent,
     PeopleComponent,
@@ -37,6 +39,7 @@ import { ChatsComponent } from './chats/chats.component';
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
+    NgxLoadingModule,
   ],
 })
 export class PagesModule {}
