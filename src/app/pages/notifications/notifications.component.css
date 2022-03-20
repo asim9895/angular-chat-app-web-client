@@ -3,7 +3,7 @@
   height: auto;
 }
 .container {
-  padding-top: 120px;
+  padding-top: 90px;
 }
 
 .list-group-item {
@@ -20,4 +20,15 @@
 
 ol {
   list-style-type: none !important;
+}
+
+.card-body {
+  color: #fff !important;
+  background-color: #121824 !important;
+}
+
+.card {
+  border-width: 0 !important;
+  background-color: #121824 !important;
+  margin-bottom: 20px;
 }

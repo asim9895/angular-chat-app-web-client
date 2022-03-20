@@ -21,6 +21,12 @@ export class SideNavComponent implements OnInit {
   pushExplore() {
     return this.router.navigate(['explore']);
   }
+  pushSaved() {
+    return this.router.navigate(['saved']);
+  }
+  pushProfile() {
+    return this.router.navigate(['profile']);
+  }
   pushPeople() {
     return this.router.navigate(['people']);
   }

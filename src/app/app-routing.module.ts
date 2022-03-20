@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ChatsComponent } from './pages/chats/chats.component';
-import { ExploreComponent } from './pages/explore/explore.component';
 import { FollowersComponent } from './pages/followers/followers.component';
 import { FollowingComponent } from './pages/following/following.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
@@ -12,6 +11,9 @@ import { PhotosComponent } from './pages/photos/photos.component';
 import { AuthGuard } from './services/auth.guard';
 import { SingleStreamComponent } from './pages/single-stream/single-stream.component';
 import { StreamsComponent } from './pages/streams/streams.component';
+import { SavedComponent } from './pages/saved/saved.component';
+import { ExploreComponent } from './pages/explore/explore.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -28,8 +30,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'stream/:id',
     component: SingleStreamComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'saved',
+    component: SavedComponent,
     canActivate: [AuthGuard],
   },
   {
