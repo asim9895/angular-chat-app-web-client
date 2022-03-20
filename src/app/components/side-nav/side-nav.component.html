@@ -5,7 +5,7 @@
         ? 'list-group-item d-flex justify-content-between align-items-start active'
         : 'list-group-item d-flex justify-content-between align-items-start'
     "
-    style="margin: 5px; padding: 10px; cursor: pointer"
+    style="margin: 5px; padding: 7px; cursor: pointer"
     (click)="pushStream()"
   >
     <div class="ms-2 me-auto">
@@ -22,7 +22,7 @@
         ? 'list-group-item d-flex justify-content-between align-items-start active'
         : 'list-group-item d-flex justify-content-between align-items-start'
     "
-    style="margin: 5px; padding: 10px; cursor: pointer"
+    style="margin: 5px; padding: 7px; cursor: pointer"
     (click)="pushExplore()"
   >
     <div class="ms-2 me-auto">
@@ -39,7 +39,7 @@
         ? 'list-group-item d-flex justify-content-between align-items-start active'
         : 'list-group-item d-flex justify-content-between align-items-start'
     "
-    style="margin: 5px; padding: 10px; cursor: pointer"
+    style="margin: 5px; padding: 7px; cursor: pointer"
     (click)="pushPeople()"
   >
     <div class="ms-2 me-auto">
@@ -56,7 +56,7 @@
         ? 'list-group-item d-flex justify-content-between align-items-start active'
         : 'list-group-item d-flex justify-content-between align-items-start'
     "
-    style="margin: 5px; padding: 10px; cursor: pointer"
+    style="margin: 5px; padding: 7px; cursor: pointer"
     (click)="pushFollowers()"
   >
     <div class="ms-2 me-auto">
@@ -75,7 +75,7 @@
         ? 'list-group-item d-flex justify-content-between align-items-start active'
         : 'list-group-item d-flex justify-content-between align-items-start'
     "
-    style="margin: 5px; padding: 10px; cursor: pointer"
+    style="margin: 5px; padding: 7px; cursor: pointer"
     (click)="pushFollowing()"
   >
     <div class="ms-2 me-auto">
@@ -92,7 +92,7 @@
         ? 'list-group-item d-flex justify-content-between align-items-start active'
         : 'list-group-item d-flex justify-content-between align-items-start'
     "
-    style="margin: 5px; padding: 10px; cursor: pointer"
+    style="margin: 5px; padding: 7px; cursor: pointer"
     (click)="pushChats()"
   >
     <div class="ms-2 me-auto">
@@ -109,7 +109,7 @@
         ? 'list-group-item d-flex justify-content-between align-items-start active'
         : 'list-group-item d-flex justify-content-between align-items-start'
     "
-    style="margin: 5px; padding: 10px; cursor: pointer"
+    style="margin: 5px; padding: 7px; cursor: pointer"
     (click)="pushPhotos()"
   >
     <div class="ms-2 me-auto">
@@ -126,7 +126,7 @@
         ? 'list-group-item d-flex justify-content-between align-items-start active'
         : 'list-group-item d-flex justify-content-between align-items-start'
     "
-    style="margin: 5px; padding: 10px; cursor: pointer"
+    style="margin: 5px; padding: 7px; cursor: pointer"
     (click)="pushNotifications()"
   >
     <div class="ms-2 me-auto">
@@ -134,6 +134,40 @@
     </div>
     <i
       class="fa-solid fa-bell"
+      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+    ></i>
+  </li>
+  <li
+    [ngClass]="
+      route === '/saved'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 7px; cursor: pointer"
+    (click)="pushSaved()"
+  >
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Saved</div>
+    </div>
+    <i
+      class="fa-regular fa-bookmark"
+      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+    ></i>
+  </li>
+  <li
+    [ngClass]="
+      route === '/profile'
+        ? 'list-group-item d-flex justify-content-between align-items-start active'
+        : 'list-group-item d-flex justify-content-between align-items-start'
+    "
+    style="margin: 5px; padding: 7px; cursor: pointer"
+    (click)="pushProfile()"
+  >
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Profile</div>
+    </div>
+    <i
+      class="fa-regular fa-user"
       style="font-size: 17px; margin-right: 5px; margin-top: 2px"
     ></i>
   </li>

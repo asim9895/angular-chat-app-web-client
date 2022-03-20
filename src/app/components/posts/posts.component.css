@@ -1,5 +1,5 @@
 .container {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 100px;
 }
 
@@ -20,6 +20,7 @@
 
 .abc {
   text-transform: capitalize !important;
+  margin-bottom: -10px;
 }
 
 .ab {

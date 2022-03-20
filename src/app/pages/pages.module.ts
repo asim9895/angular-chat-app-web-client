@@ -12,10 +12,12 @@ import { PeopleComponent } from './people/people.component';
 import { PhotosComponent } from './photos/photos.component';
 import { SingleStreamComponent } from './single-stream/single-stream.component';
 import { StreamsComponent } from './streams/streams.component';
-import { ExploreComponent } from './explore/explore.component';
 import { ChatsComponent } from './chats/chats.component';
 import { FollowingComponent } from './following/following.component';
 import { NgxLoadingModule } from 'ngx-loading';
+import { SavedComponent } from './saved/saved.component';
+import { ExploreComponent } from './explore/explore.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,10 @@ import { NgxLoadingModule } from 'ngx-loading';
     PhotosComponent,
     SingleStreamComponent,
     StreamsComponent,
-    ExploreComponent,
     ChatsComponent,
+    SavedComponent,
+    ExploreComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

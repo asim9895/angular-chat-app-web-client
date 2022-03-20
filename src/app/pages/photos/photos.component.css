@@ -1,24 +1,23 @@
 .body {
-    background-color: #121824 !important;
-    height: auto;
-  }
-  .container {
-    padding-top: 120px;
-  }
-  
-  .list-group-item {
-    position: relative;
-    display: block;
-    padding: 0.5rem 1rem;
-    color: white !important;
-    text-decoration: none;
-    background-color: #121824 !important;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-  }
-  
-  ol {
-    list-style-type: none !important;
-  }
-  
+  background-color: #121824 !important;
+  height: auto;
+}
+.container {
+  padding-top: 90px;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white !important;
+  text-decoration: none;
+  background-color: #121824 !important;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+ol {
+  list-style-type: none !important;
+}
