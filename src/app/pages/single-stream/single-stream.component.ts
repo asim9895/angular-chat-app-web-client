@@ -69,18 +69,30 @@ export class SingleStreamComponent implements OnInit {
     this.tab = 'comments';
   }
 
+  selectSavedTab() {
+    this.tab = 'saved';
+  }
+
   likePost(post: any) {
     this.postService.like_post({ post_id: post?._id }).subscribe((data) => {
       this.socket.emit('refresh', {});
-      console.log(data);
-      console.log('liked');
     });
   }
   unlikePost(post: any) {
     this.postService.unlike_post({ post_id: post?._id }).subscribe((data) => {
       this.socket.emit('refresh', {});
-      console.log(data);
-      console.log('not liked');
+    });
+  }
+
+  savePost(post: any) {
+    this.postService.save_post({ post_id: post?._id }).subscribe((data) => {
+      this.socket.emit('refresh', {});
+    });
+  }
+
+  unsavePost(post: any) {
+    this.postService.unsave_post({ post_id: post?._id }).subscribe((data) => {
+      this.socket.emit('refresh', {});
     });
   }
 
@@ -92,15 +104,22 @@ export class SingleStreamComponent implements OnInit {
     return this.router.navigate(['stream', stream?._id]);
   }
 
+  removeComment(post_id: any, comment_id: any) {
+    this.postService
+      .remove_comment({ post_id, comment_id })
+      .subscribe((data) => {
+        this.socket.emit('refresh', {});
+        this.toast.success('Comment deleted Successfully');
+      });
+  }
+
   getPostById() {
     this.postService.post_by_id({ post_id: this.post_id }).subscribe((data) => {
       this.post = data?.post;
-      console.log(data);
     });
   }
 
   comment_form() {
-    console.log(this.commentForm.value);
     this.postService
       .add_comment({
         post_id: this.post_id,
@@ -115,7 +134,6 @@ export class SingleStreamComponent implements OnInit {
           }
         },
         (err) => {
-          console.log(err);
           return this.toast.error(err?.error.error[0]?.msg, 'Upload Error');
         }
       );

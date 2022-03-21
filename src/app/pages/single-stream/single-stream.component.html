@@ -46,10 +46,10 @@
                 {{ post?.likes?.length === 0 ? "" : post?.likes?.length }}
                 Likes
               </div>
-              <div class="col-5">
+              <div class="col-4">
                 <i
                   [ngClass]="
-                    !checkArray(post.comments, user._id)
+                    !checkArray(post?.comments, user?._id)
                       ? 'fa-regular fa-comment'
                       : 'fa-solid fa-comment com-color'
                   "
@@ -58,6 +58,22 @@
                 ></i>
                 {{ post?.comments?.length === 0 ? "" : post?.comments?.length }}
                 Comments
+              </div>
+              <div class="col-4">
+                <i
+                  *ngIf="!checkArray(post?.saved, user?._id)"
+                  class="fa-regular fa-bookmark"
+                  (click)="savePost(post)"
+                  style="font-size: 22px; cursor: pointer"
+                ></i>
+                <i
+                  *ngIf="checkArray(post?.saved, user?._id)"
+                  class="fa-solid fa-bookmark ab"
+                  (click)="unsavePost(post)"
+                  style="font-size: 22px; cursor: pointer"
+                ></i>
+                {{ post?.saved?.length === 0 ? "" : post?.saved?.length }}
+                Saved
               </div>
             </div>
             <p class="card-text">
@@ -82,6 +98,13 @@
               [ngClass]="tab === 'likes' ? 'nav-link active' : 'nav-link'"
               (click)="selectLikesTab()"
               >Likes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              [ngClass]="tab === 'saved' ? 'nav-link active' : 'nav-link'"
+              (click)="selectSavedTab()"
+              >Saved</a
             >
           </li>
         </ul>
@@ -155,6 +178,7 @@
                     <div *ngIf="comment?.user?._id === user?._id">
                       <i
                         class="fa-solid fa-trash"
+                        (click)="removeComment(post?._id, comment?._id)"
                         style="font-size: 18px; color: crimson"
                       ></i>
                     </div>
@@ -194,6 +218,44 @@
                     <p class="card-text">
                       <small class="text-muted">{{
                         timeFromNow(like?.createdAt)
+                      }}</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="tab === 'saved'">
+          <div *ngFor="let save of post?.saved">
+            <div class="card com" style="margin-bottom: -10px">
+              <div class="card-body text-primary">
+                <div class="row" style="align-items: center">
+                  <div class="col-1">
+                    <img
+                      src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+                      class="comments-image"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="col-7">
+                    <p
+                      class="card-title"
+                      style="
+                        font-size: 18px;
+                        text-decoration: underline;
+                        color: #394be9;
+                        cursor: pointer;
+                      "
+                    >
+                      {{ save?.user?.username }}
+                    </p>
+                  </div>
+                  <div class="col-3">
+                    <p class="card-text">
+                      <small class="text-muted">{{
+                        timeFromNow(save?.createdAt)
                       }}</small>
                     </p>
                   </div>

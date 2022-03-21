@@ -1,5 +1,12 @@
 <div class="container">
   <div class="row">
+    <ng-container *ngIf="posts?.length === 0">
+      <div>
+        <h3 style="color: #fff; text-align: center; margin-top: 100px">
+          No Posts Found
+        </h3>
+      </div>
+    </ng-container>
     <div class="col-6" *ngFor="let post of posts">
       <div class="card">
         <div class="card-body">
@@ -31,9 +38,9 @@
                 (click)="unlikePost(post)"
                 style="font-size: 22px; cursor: pointer"
               ></i>
-              {{ post?.likes?.length === 0 ? "" : post?.likes?.length }} Likes
+              {{ post?.likes?.length === 0 ? "" : post?.likes?.length }}
             </div>
-            <div class="col-5">
+            <div class="col-4">
               <i
                 [ngClass]="
                   !checkArray(post.comments, user._id)
@@ -44,7 +51,21 @@
                 (click)="newComment(post)"
               ></i>
               {{ post?.comments?.length === 0 ? "" : post?.comments?.length }}
-              Comments
+            </div>
+            <div class="col-4" *ngIf="post?.user?._id !== user?._id">
+              <i
+                *ngIf="!checkArray(post.saved, user._id)"
+                class="fa-regular fa-bookmark"
+                (click)="savePost(post)"
+                style="font-size: 22px; cursor: pointer"
+              ></i>
+              <i
+                *ngIf="checkArray(post.saved, user._id)"
+                class="fa-solid fa-bookmark ab"
+                (click)="unsavePost(post)"
+                style="font-size: 22px; cursor: pointer"
+              ></i>
+              {{ post?.saved?.length === 0 ? "" : post?.saved?.length }}
             </div>
           </div>
           <p class="card-text">
