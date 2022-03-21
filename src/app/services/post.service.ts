@@ -23,14 +23,26 @@ export class PostService {
   }
 
   like_post(body: any): Observable<any> {
-    return this.http.post(`${BASE_URL}/add-like`, body);
+    return this.http.put(`${BASE_URL}/add-like`, body);
   }
 
   unlike_post(body: any): Observable<any> {
-    return this.http.post(`${BASE_URL}/remove-like`, body);
+    return this.http.put(`${BASE_URL}/remove-like`, body);
+  }
+
+  save_post(body: any): Observable<any> {
+    return this.http.put(`${BASE_URL}/save-post`, body);
+  }
+
+  unsave_post(body: any): Observable<any> {
+    return this.http.put(`${BASE_URL}/unsave-post`, body);
   }
 
   add_comment(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/add-comment`, body);
+  }
+
+  remove_comment(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/remove-comment`, body);
   }
 }

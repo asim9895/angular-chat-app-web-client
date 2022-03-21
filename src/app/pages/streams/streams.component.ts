@@ -33,6 +33,7 @@ export class StreamsComponent implements OnInit {
 
     this.get_current_user();
     this.get_all_posts();
+
     this.socket.on('refreshPage', () => {
       this.get_all_posts();
     });
@@ -41,6 +42,7 @@ export class StreamsComponent implements OnInit {
   get_all_posts() {
     this.postService.all_posts({}).subscribe((data) => {
       this.posts = data?.posts;
+      console.log(data);
     });
   }
 

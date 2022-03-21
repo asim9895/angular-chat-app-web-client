@@ -7,6 +7,8 @@ import { TokenService } from 'src/app/services/token.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import * as UserActions from '../../redux/actions/users.actions';
 
 @Component({
   selector: 'app-posts',
@@ -22,7 +24,8 @@ export class PostsComponent implements OnInit {
     public postService: PostService,
     public tokenService: TokenService,
     private store: Store<AppState>,
-    public router: Router
+    public router: Router,
+    public authService: AuthService
   ) {
     this.socket = io('http://localhost:2300');
   }
@@ -34,6 +37,9 @@ export class PostsComponent implements OnInit {
 
     this.socket.on('refreshPage', () => {
       this.posts = this.posts;
+      this.authService.curent_user({}).subscribe((data) => {
+        this.store.dispatch(new UserActions.SaveUser(data.user));
+      });
     });
   }
 
@@ -52,6 +58,17 @@ export class PostsComponent implements OnInit {
   }
   unlikePost(post: any) {
     this.postService.unlike_post({ post_id: post?._id }).subscribe((data) => {
+      this.socket.emit('refresh', {});
+    });
+  }
+
+  savePost(post: any) {
+    this.postService.save_post({ post_id: post?._id }).subscribe((data) => {
+      this.socket.emit('refresh', {});
+    });
+  }
+  unsavePost(post: any) {
+    this.postService.unsave_post({ post_id: post?._id }).subscribe((data) => {
       this.socket.emit('refresh', {});
     });
   }
