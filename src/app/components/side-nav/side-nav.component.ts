@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.state';
 
 @Component({
   selector: 'app-side-nav',
@@ -8,11 +10,15 @@ import { Router } from '@angular/router';
 })
 export class SideNavComponent implements OnInit {
   route: any;
-  constructor(private router: Router) {}
+  user: any;
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    console.log(this.router.url);
     this.route = this.router.url;
+
+    this.store.select('users').subscribe((res) => {
+      this.user = res?.user;
+    });
   }
 
   pushStream() {

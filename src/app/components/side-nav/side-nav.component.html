@@ -9,12 +9,14 @@
     (click)="pushStream()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Feed</div>
+      <div class="fw-bold">
+        <i
+          class="fa-solid fa-house"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        Feed
+      </div>
     </div>
-    <i
-      class="fa-solid fa-house"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
   </li>
   <li
     [ngClass]="
@@ -26,12 +28,14 @@
     (click)="pushExplore()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Explore</div>
+      <div class="fw-bold">
+        <i
+          class="fa-solid fa-magnifying-glass"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        Explore
+      </div>
     </div>
-    <i
-      class="fa-solid fa-magnifying-glass"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
   </li>
   <li
     [ngClass]="
@@ -43,12 +47,14 @@
     (click)="pushPeople()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">People</div>
+      <div class="fw-bold">
+        <i
+          class="fa-solid fa-user-group"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        People
+      </div>
     </div>
-    <i
-      class="fa-solid fa-user-group"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
   </li>
   <li
     [ngClass]="
@@ -60,13 +66,17 @@
     (click)="pushFollowers()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Followers</div>
+      <div class="fw-bold">
+        <i
+          class="fa-solid fa-users"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        Followers
+      </div>
     </div>
-
-    <i
-      class="fa-solid fa-users"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
+    <div style="margin-right: 5px">
+      {{ user?.followers?.length === 0 ? "" : user?.followers?.length }}
+    </div>
   </li>
 
   <li
@@ -79,12 +89,17 @@
     (click)="pushFollowing()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Following</div>
+      <div class="fw-bold">
+        <i
+          class="fa-solid fa-users"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        Following
+      </div>
     </div>
-    <i
-      class="fa-solid fa-users"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
+    <div style="margin-right: 5px; font-weight: bold">
+      {{ user?.following?.length === 0 ? "" : user?.following?.length }}
+    </div>
   </li>
   <li
     [ngClass]="
@@ -96,12 +111,14 @@
     (click)="pushChats()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Chats</div>
+      <div class="fw-bold">
+        <i
+          class="fa-solid fa-message"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        Chats
+      </div>
     </div>
-    <i
-      class="fa-solid fa-message"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
   </li>
   <li
     [ngClass]="
@@ -113,12 +130,14 @@
     (click)="pushPhotos()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Photos</div>
+      <div class="fw-bold">
+        <i
+          class="fa-solid fa-image"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        Photos
+      </div>
     </div>
-    <i
-      class="fa-solid fa-image"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
   </li>
   <li
     [ngClass]="
@@ -130,12 +149,14 @@
     (click)="pushNotifications()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Notifications</div>
+      <div class="fw-bold">
+        <i
+          class="fa-solid fa-bell"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        Notifications
+      </div>
     </div>
-    <i
-      class="fa-solid fa-bell"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
   </li>
   <li
     [ngClass]="
@@ -147,12 +168,17 @@
     (click)="pushSaved()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Saved</div>
+      <div class="fw-bold">
+        <i
+          class="fa-regular fa-bookmark"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+        Saved
+      </div>
     </div>
-    <i
-      class="fa-regular fa-bookmark"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
+    <div style="margin-right: 5px">
+      {{ user?.saved?.length === 0 ? "" : user?.saved?.length }}
+    </div>
   </li>
   <li
     [ngClass]="
@@ -164,11 +190,14 @@
     (click)="pushProfile()"
   >
     <div class="ms-2 me-auto">
-      <div class="fw-bold">Profile</div>
+      <div class="fw-bold">
+        <i
+          class="fa-regular fa-user"
+          style="font-size: 17px; margin-right: 5px; margin-top: 2px"
+        ></i>
+
+        Profile
+      </div>
     </div>
-    <i
-      class="fa-regular fa-user"
-      style="font-size: 17px; margin-right: 5px; margin-top: 2px"
-    ></i>
   </li>
 </ul>

@@ -32,3 +32,8 @@ ol {
   background-color: #121824 !important;
   margin-bottom: 20px;
 }
+
+.title {
+  font-size: 20px;
+  color: "#394be9";
+}
