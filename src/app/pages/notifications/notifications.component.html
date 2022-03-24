@@ -7,14 +7,66 @@
         <app-side-nav></app-side-nav>
       </div>
       <div class="col-sm-8" style="margin-top: 20px">
-        <div class="card">
-          <div class="card-body">This is some text within a card body.</div>
-        </div>
-        <div class="card">
-          <div class="card-body">This is some text within a card body.</div>
-        </div>
-        <div class="card">
-          <div class="card-body">This is some text within a card body.</div>
+        <h3 style="color: #394be9">Notifications</h3>
+        <div
+          class="card"
+          *ngFor="let notification of notifications"
+          style="margin-top: 20px"
+        >
+          <div class="card-body" style="margin-bottom: -50px !important">
+            <div
+              style="
+                flex-direction: row;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <div>
+                <img
+                  src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+                  class="card-img-top"
+                  alt="..."
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 10px;
+                    margin-right: 10px;
+                  "
+                />
+                <a
+                  href="/"
+                  style="
+                    color: #394be9;
+                    margin-right: 3px;
+                    font-size: 18px;
+
+                    text-transform: capitalize;
+                    text-decoration: none;
+                  "
+                >
+                  {{ notification?.sender?.username }}
+                </a>
+                {{ notification?.message }}
+              </div>
+              <div
+                style="
+                  margin-top: 15px;
+                  flex-direction: column;
+                  display: flex;
+                  align-items: flex-end;
+                  justify-content: end;
+                "
+              >
+                <p style="color: #394be9; margin-right: 5px; font-size: 15px">
+                  Read
+                </p>
+                <p style="color: gray; font-size: 14px">
+                  {{ timeFromNow(notification?.createdAt) }}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

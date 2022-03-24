@@ -18,6 +18,10 @@ export class PostService {
     return this.http.post(`${BASE_URL}/all-posts`, body);
   }
 
+  random_posts(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/random-posts`, body);
+  }
+
   post_by_id(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/post-by-id`, body);
   }
