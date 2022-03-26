@@ -21,3 +21,78 @@
 ol {
   list-style-type: none !important;
 }
+
+.card {
+  border-width: 0 !important;
+  background-color: #121824 !important;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.card-body {
+  color: #fff !important;
+}
+
+.card {
+  border-width: 0 !important;
+  margin-bottom: 20px;
+}
+
+.card-img-top {
+  border-radius: 45px !important;
+  width: 50px !important;
+  height: 50px !important;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.abc {
+  text-transform: capitalize !important;
+}
+
+.ab {
+  color: crimson !important;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.message-alignment-right {
+  align-items: flex-end;
+}
+
+.message-alignment-left {
+  align-items: flex-start;
+}
+
+.com-color {
+  color: #394be9 !important;
+}
+
+.form-control {
+  background-color: #121824 !important;
+  color: #fff !important;
+  border: 0.5px solid #394be9 !important;
+}
+
+input {
+  color: #fff !important;
+}
+
+.bt {
+  background-color: #394be9 !important;
+}
+
+.chat-users {
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  padding: 5px;
+  border-radius: 10px;
+  width: 14rem;
+}
+
+.chat-user-background {
+  background-color: #394be9;
+}
