@@ -14,6 +14,10 @@ export class UserService {
     return this.http.post(`${BASE_URL}/all-users`, body);
   }
 
+  user_by_id(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/user-by-id`, body);
+  }
+
   search_users(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/search-users`, body);
   }

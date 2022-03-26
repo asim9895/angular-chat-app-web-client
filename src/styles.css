@@ -27,10 +27,10 @@ a {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #121824;
+  background: #394be9;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #121824;
+  background: #394be9;
 }

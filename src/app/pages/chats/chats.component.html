@@ -7,7 +7,221 @@
         <app-side-nav></app-side-nav>
       </div>
       <div class="col-sm-8">
-        <h1>Chats</h1>
+        <div class="row">
+          <div
+            class="col-sm-4"
+            style="border-color: #394be9; border-width: 2px"
+          >
+            <form
+              [formGroup]="searchForm"
+              novalidate
+              (ngSubmit)="searchUsers()"
+            >
+              <div
+                style="
+                  flex-direction: row;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search User"
+                  required
+                  formControlName="search"
+                  style="width: 80%; margin-right: 20px"
+                />
+                <i
+                  type="submit"
+                  class="fa-solid fa-magnifying-glass"
+                  style="
+                    font-size: 17px;
+                    margin-right: 10px;
+                    margin-top: 2px;
+                    color: #394be9;
+                    cursor: pointer;
+                  "
+                ></i>
+                <i
+                  class="fa-solid fa-xmark ab"
+                  (click)="clearFilter()"
+                  *ngIf="searched"
+                ></i>
+              </div>
+              <br />
+            </form>
+
+            <div class="row">
+              <ng-container *ngIf="followers?.length === 0">
+                <div>
+                  <h3
+                    style="color: #fff; text-align: center; margin-top: 100px"
+                  >
+                    No Users Found
+                  </h3>
+                  <ngx-loading
+                    [show]="loading"
+                    [config]="{
+                      backdropBorderRadius: '3px',
+                      primaryColour: '#394be9',
+                      secondaryColour: '#394be9',
+                      tertiaryColour: '#394be9'
+                    }"
+                  ></ngx-loading>
+                </div>
+              </ng-container>
+
+              <div class="card-body" *ngFor="let user of followers">
+                <div
+                  (click)="setSelectedUser(user)"
+                  [ngClass]="
+                    selected_user?._id === user?._id
+                      ? 'chat-users chat-user-background '
+                      : 'chat-users '
+                  "
+                >
+                  <img
+                    src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <p class="card-text">
+                    {{ user?.user?.username }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <h3
+              *ngIf="selected_user === null"
+              style="color: #fff; text-align: center; margin-top: 200px"
+            >
+              Select User to chat
+            </h3>
+
+            <div class="card">
+              <div class="chat-users" *ngIf="selected_user !== null">
+                <img
+                  src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+                  class="card-img-top"
+                  alt="..."
+                />
+                <p class="card-text">
+                  {{ selected_user?.user?.username }}
+                </p>
+              </div>
+            </div>
+
+            <div
+              [ngClass]="
+                sender
+                  ? 'card message-alignment-right'
+                  : 'card message-alignment-left'
+              "
+              style="
+                height: 400px;
+                overflow-y: scroll;
+                display: flex;
+                flex-direction: column;
+              "
+              *ngIf="selected_user !== null"
+            >
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  padding: 5px;
+                  background-color: #394be9;
+                  justify-content: flex-start;
+                  width: 50%;
+                  margin: 10px;
+                  border-radius: 10px;
+                "
+              >
+                <img
+                  src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+                  alt="..."
+                  style="width: 20px; height: 20px; border-radius: 10px"
+                />
+
+                <p
+                  style="
+                    color: #fff;
+                    font-size: 15px;
+                    margin-top: 15px;
+                    margin-left: 10px;
+                  "
+                >
+                  Asim is here to see how the people can relate with them
+                </p>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  padding: 5px;
+                  background-color: #394be9;
+                  width: 50%;
+                  margin: 10px;
+                  border-radius: 10px;
+                "
+              >
+                <p style="color: #fff; font-size: 15px; margin-top: 15px">
+                  Asim is here to see how the people can relate with them
+                </p>
+                <img
+                  src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
+                  alt="..."
+                  style="width: 20px; height: 20px; border-radius: 10px"
+                />
+              </div>
+            </div>
+
+            <form
+              [formGroup]="searchForm"
+              novalidate
+              (ngSubmit)="searchUsers()"
+              *ngIf="selected_user !== null"
+            >
+              <div
+                style="
+                  flex-direction: row;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search User"
+                  required
+                  formControlName="search"
+                  style="width: 80%; margin-right: 20px"
+                />
+                <button
+                  type="submit"
+                  class="btn btn-primary bt"
+                  style="
+                    font-size: 17px;
+
+                    color: #fff;
+                    cursor: pointer;
+                  "
+                >
+                  Send
+                </button>
+              </div>
+              <br />
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
