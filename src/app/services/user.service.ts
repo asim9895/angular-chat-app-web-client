@@ -29,4 +29,8 @@ export class UserService {
   unfollow_user(body: any): Observable<any> {
     return this.http.post(`${BASE_URL}/unfollow-user`, body);
   }
+
+  mark_all_notifications_read(body: any): Observable<any> {
+    return this.http.post(`${BASE_URL}/mark-all-notifications`, body);
+  }
 }

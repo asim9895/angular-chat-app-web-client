@@ -7,6 +7,7 @@ import io from 'socket.io-client';
 import * as _ from 'lodash';
 import { AuthService } from 'src/app/services/auth.service';
 import * as UserActions from '../../redux/actions/users.actions';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-chats',
@@ -17,6 +18,7 @@ export class ChatsComponent implements OnInit {
   user_info: any;
   followers: any = [];
   searchForm: FormGroup;
+  messageForm: FormGroup;
   socket: any;
   loading: boolean = false;
   searched: boolean = false;
@@ -27,7 +29,7 @@ export class ChatsComponent implements OnInit {
     private store: Store<AppState>,
     private fb: FormBuilder,
     private authService: AuthService,
-    private userService: UserService
+    private messageService: MessageService
   ) {
     this.socket = io('http://localhost:2300');
   }
@@ -49,6 +51,9 @@ export class ChatsComponent implements OnInit {
 
     this.searchForm = this.fb.group({
       search: ['', Validators.required],
+    });
+    this.messageForm = this.fb.group({
+      message: ['', Validators.required],
     });
   }
 
@@ -83,6 +88,19 @@ export class ChatsComponent implements OnInit {
         console.log(f.user?.username);
         this.loading = false;
         return f.user?.username?.match(this.searchForm.value.search);
+      });
+  }
+
+  sendMessage() {
+    this.messageService
+      .send_message({
+        sender: this.user_info?._id,
+        receiver: this.selected_user?._id,
+        message: this.messageForm.value.message,
+      })
+      .subscribe((data) => {
+        console.log(data);
+        this.messageForm.reset();
       });
   }
 }

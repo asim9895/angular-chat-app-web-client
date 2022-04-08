@@ -117,7 +117,7 @@
 
             <div
               [ngClass]="
-                sender
+                selected_user?._id !== user_info?._id
                   ? 'card message-alignment-right'
                   : 'card message-alignment-left'
               "
@@ -136,7 +136,7 @@
                   align-items: center;
                   padding: 5px;
                   background-color: #394be9;
-                  justify-content: flex-start;
+                  justify-content: flex-end;
                   width: 50%;
                   margin: 10px;
                   border-radius: 10px;
@@ -184,9 +184,9 @@
             </div>
 
             <form
-              [formGroup]="searchForm"
+              (ngSubmit)="sendMessage()"
+              [formGroup]="messageForm"
               novalidate
-              (ngSubmit)="searchUsers()"
               *ngIf="selected_user !== null"
             >
               <div
@@ -201,12 +201,14 @@
                   type="text"
                   class="form-control"
                   placeholder="Search User"
+                  name="message"
+                  formControlName="message"
                   required
-                  formControlName="search"
                   style="width: 80%; margin-right: 20px"
                 />
                 <button
                   type="submit"
+                  [disabled]="!messageForm.valid"
                   class="btn btn-primary bt"
                   style="
                     font-size: 17px;
