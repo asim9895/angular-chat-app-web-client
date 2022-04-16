@@ -60,6 +60,7 @@ ol {
 
 .message-alignment-right {
   align-items: flex-end;
+  justify-content:left
 }
 
 .message-alignment-left {
