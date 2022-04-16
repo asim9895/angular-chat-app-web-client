@@ -115,12 +115,8 @@
               </div>
             </div>
 
-            <div
-              [ngClass]="
-                selected_user?._id !== user_info?._id
-                  ? 'card message-alignment-right'
-                  : 'card message-alignment-left'
-              "
+            <div>
+              <div
               style="
                 height: 400px;
                 overflow-y: scroll;
@@ -136,18 +132,15 @@
                   align-items: center;
                   padding: 5px;
                   background-color: #394be9;
-                  justify-content: flex-end;
+                 
                   width: 50%;
                   margin: 10px;
                   border-radius: 10px;
                 "
+                [ngClass]="message?.receiver === selected_user?.id ? 'message-alignment-right': 'message-alignment-left'"
+                *ngFor="let message of messages"
               >
-                <img
-                  src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
-                  alt="..."
-                  style="width: 20px; height: 20px; border-radius: 10px"
-                />
-
+               
                 <p
                   style="
                     color: #fff;
@@ -156,31 +149,12 @@
                     margin-left: 10px;
                   "
                 >
-                  Asim is here to see how the people can relate with them
+                  {{message?.message}}
                 </p>
               </div>
 
-              <div
-                style="
-                  display: flex;
-                  flex-direction: row;
-                  align-items: center;
-                  padding: 5px;
-                  background-color: #394be9;
-                  width: 50%;
-                  margin: 10px;
-                  border-radius: 10px;
-                "
-              >
-                <p style="color: #fff; font-size: 15px; margin-top: 15px">
-                  Asim is here to see how the people can relate with them
-                </p>
-                <img
-                  src="https://media.istockphoto.com/photos/young-beautiful-woman-picture-id1294339577?b=1&k=20&m=1294339577&s=170667a&w=0&h=_5-SM0Dmhb1fhRdz64lOUJMy8oic51GB_2_IPlhCCnU="
-                  alt="..."
-                  style="width: 20px; height: 20px; border-radius: 10px"
-                />
-              </div>
+              
+            </div>
             </div>
 
             <form

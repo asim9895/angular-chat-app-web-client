@@ -24,6 +24,7 @@ export class ChatsComponent implements OnInit {
   searched: boolean = false;
   selected_user: any = null;
   sender: boolean = true;
+  messages: any
 
   constructor(
     private store: Store<AppState>,
@@ -59,7 +60,17 @@ export class ChatsComponent implements OnInit {
 
   setSelectedUser(user: any) {
     this.selected_user = user;
-    console.log(this.selected_user);
+    console.log(this.selected_user?.user);
+     this.messageService
+      .all_chat_messages({
+        sender: this.user_info?._id,
+        receiver: this.selected_user?.user?._id,
+      })
+      .subscribe((data) => {
+        console.log('all_messages' , data);
+        this.messages = data?.messages?.message
+      });
+  
   }
 
   checkArray(arr: any, user: any) {
@@ -85,7 +96,7 @@ export class ChatsComponent implements OnInit {
     this.followers =
       this.user_info?.followers.length > 0 &&
       this.user_info?.followers.filter((f: any) => {
-        console.log(f.user?.username);
+        console.log(f?.user?.username);
         this.loading = false;
         return f.user?.username?.match(this.searchForm.value.search);
       });
@@ -95,7 +106,7 @@ export class ChatsComponent implements OnInit {
     this.messageService
       .send_message({
         sender: this.user_info?._id,
-        receiver: this.selected_user?._id,
+        receiver: this.selected_user?.user?._id,
         message: this.messageForm.value.message,
       })
       .subscribe((data) => {
