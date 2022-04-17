@@ -109,9 +109,13 @@
                   class="card-img-top"
                   alt="..."
                 />
-                <p class="card-text">
+                <div class="card-text">
                   {{ selected_user?.user?.username }}
-                </p>
+                  <p class="card-text" *ngIf="typing === true">
+                    is typing...
+                   </p>
+                  </div>
+                
               </div>
             </div>
 
@@ -119,28 +123,19 @@
               <div
               style="
                 height: 400px;
-                overflow-y: scroll;
+                overflow-y: auto;
                 display: flex;
                 flex-direction: column;
+                margin-bottom: 20px;
               "
               *ngIf="selected_user !== null"
+              id="parentDiv"
             >
               <div
-                style="
-                  display: flex;
-                  flex-direction: row;
-                  align-items: center;
-                  padding: 5px;
-                  background-color: #394be9;
-                 
-                  width: 50%;
-                  margin: 10px;
-                  border-radius: 10px;
-                "
-                [ngClass]="message?.receiver === selected_user?.id ? 'message-alignment-right': 'message-alignment-left'"
-                *ngFor="let message of messages"
+              [ngClass]="message?.sender === user_info?._id ? 'message-alignment-right': 'message-alignment-left'"
+              *ngFor="let message of messages"
               >
-               
+                <div>
                 <p
                   style="
                     color: #fff;
@@ -151,6 +146,7 @@
                 >
                   {{message?.message}}
                 </p>
+              </div>
               </div>
 
               
@@ -179,6 +175,7 @@
                   formControlName="message"
                   required
                   style="width: 80%; margin-right: 20px"
+                  (keypress)="isTyping()"
                 />
                 <button
                   type="submit"
