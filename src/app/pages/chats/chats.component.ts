@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
@@ -24,7 +24,10 @@ export class ChatsComponent implements OnInit {
   searched: boolean = false;
   selected_user: any = null;
   sender: boolean = true;
-  messages: any
+  messages: any;
+  objDiv: any;
+  typingMessage: any;
+  typing = false;
 
   constructor(
     private store: Store<AppState>,
@@ -36,6 +39,17 @@ export class ChatsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.socket.on('is_typing', (data: any) => {
+      if (data.sender === this.selected_user?.user?.username) {
+        this.typing = true;
+      }
+    });
+
+    this.socket.on('is_not_typing', (data: any) => {
+      if (data.sender === this.selected_user?.user?.username) {
+        this.typing = false;
+      }
+    });
     this.socket.on('refreshPage', () => {
       this.getCurrentUser();
       this.store.select('users').subscribe((res) => {
@@ -43,6 +57,7 @@ export class ChatsComponent implements OnInit {
         this.followers = res?.user?.followers;
         console.log(this.followers);
       });
+      this.getAllMessages();
     });
     this.store.select('users').subscribe((res) => {
       this.user_info = res?.user;
@@ -58,19 +73,28 @@ export class ChatsComponent implements OnInit {
     });
   }
 
-  setSelectedUser(user: any) {
-    this.selected_user = user;
-    console.log(this.selected_user?.user);
-     this.messageService
+  getAllMessages() {
+    this.messageService
       .all_chat_messages({
         sender: this.user_info?._id,
         receiver: this.selected_user?.user?._id,
       })
       .subscribe((data) => {
-        console.log('all_messages' , data);
-        this.messages = data?.messages?.message
+        console.log('all_messages', data);
+        this.messages = data?.messages?.message;
       });
-  
+  }
+
+  setSelectedUser(user: any) {
+    this.selected_user = user;
+    console.log(this.selected_user?.user);
+    const params = {
+      room1: this.user_info?.username,
+      room2: this.selected_user?.user?.username,
+    };
+
+    this.socket.emit('join chat', params);
+    this.getAllMessages();
   }
 
   checkArray(arr: any, user: any) {
@@ -111,7 +135,24 @@ export class ChatsComponent implements OnInit {
       })
       .subscribe((data) => {
         console.log(data);
+        this.socket.emit('refresh', {});
         this.messageForm.reset();
       });
+  }
+
+  isTyping() {
+    let data = {
+      sender: this.user_info?.username,
+      receiver: this.selected_user?.user?.username,
+    };
+    this.socket.emit('start_typing', data);
+
+    if (this.typingMessage) {
+      clearTimeout(this.typingMessage);
+    }
+
+    this.typingMessage = setTimeout(() => {
+      this.socket.emit('stop_typing', data);
+    }, 500);
   }
 }

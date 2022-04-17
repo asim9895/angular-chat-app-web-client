@@ -59,12 +59,21 @@ ol {
 }
 
 .message-alignment-right {
-  align-items: flex-end;
-  justify-content:left
+  display: flex;
+  align-items:flex-end;
+  justify-content:flex-end;
+  margin-right: 20px;
+  
 }
 
 .message-alignment-left {
+  display: flex;
   align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 250px;
+  margin-bottom: 5px;
+  border-radius: 20px;
+  background-color: #394be9;
 }
 
 .com-color {

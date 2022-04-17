@@ -13,7 +13,7 @@
           *ngFor="let notification of notifications"
           style="margin-top: 20px"
         >
-          <div class="card-body" style="margin-bottom: -50px !important">
+          <div class="card-body" style="margin-bottom: -30px !important">
             <div
               style="
                 flex-direction: row;
@@ -58,9 +58,7 @@
                   justify-content: end;
                 "
               >
-                <p style="color: #394be9; margin-right: 5px; font-size: 15px">
-                  Read
-                </p>
+                
                 <p style="color: gray; font-size: 14px">
                   {{ timeFromNow(notification?.createdAt) }}
                 </p>
